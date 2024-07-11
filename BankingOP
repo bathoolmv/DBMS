@@ -1,20 +1,27 @@
-DECLARE 
-xacct_no number(5);
-xmin_bal number(5):=1000;  
-xbalance number(5); 
-BEGIN
-xacct_no:=&xacct_no;
-select balance into xbalance  
-from acct_master  
-where acct_no=xacct_no;  
-IF(xbalance < xmin_bal) THEN 
-update acct_master  
-set balance=balance-100  
-where acct_no=xacct_no;                                                                
-xbalance:=xbalance-100;  
-dbms_output.put_line('Rs 100 is deducted  and current balance is '||xbalance);
-ELSE             
-dbms_output.put_line('Current balance is '||xbalance);
-END IF;     
-END;  
+declare
+a number;
+b number;
+c number;
+d number;
+e number;
+procedure add(x in number,y in number,z out number)is
+begin
+z:=x+y;
+end;
+procedure sub(x in number,y in number,z out number)is
+begin
+z:=x-y;
+end;
+begin
+a:=&a;
+dbms_output.put_line(chr(10)||a||' currect balance');
+b:=&b;
+dbms_output.put_line(chr(10)||b||' deposited to your acc');
+add(a,b,c);
+dbms_output.put_line(chr(10)||'Current Balance:'||c);
+d:=&d;
+dbms_output.put_line(chr(10)||d||' withdrawed');
+sub(c,d,e);
+dbms_output.put_line(chr(10)||'Current Balance:'||e);
+end;
 /
