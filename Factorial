@@ -1,0 +1,12 @@
+declare
+n number;
+fac number:=1;
+begin
+n:=&n;
+for i in 1..n
+loop
+fac:=fac*i;
+end loop;
+dbms_output.put_line('Factorial:'||fac);
+end;
+/
