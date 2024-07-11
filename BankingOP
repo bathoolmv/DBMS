@@ -1,0 +1,20 @@
+DECLARE 
+xacct_no number(5);
+xmin_bal number(5):=1000;  
+xbalance number(5); 
+BEGIN
+xacct_no:=&xacct_no;
+select balance into xbalance  
+from acct_master  
+where acct_no=xacct_no;  
+IF(xbalance < xmin_bal) THEN 
+update acct_master  
+set balance=balance-100  
+where acct_no=xacct_no;                                                                
+xbalance:=xbalance-100;  
+dbms_output.put_line('Rs 100 is deducted  and current balance is '||xbalance);
+ELSE             
+dbms_output.put_line('Current balance is '||xbalance);
+END IF;     
+END;  
+/
