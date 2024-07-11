@@ -1,0 +1,9 @@
+DECLARE 
+    area NUMBER;
+    radius NUMBER; 
+    pi CONSTANT NUMBER:= 3.14;  
+BEGIN      dbms_output.Put_line('enter radius= ');
+        radius:=&radius;
+        area := pi * radius * radius;      dbms_output.Put_line('Area = ' || area);  
+END;  
+/
