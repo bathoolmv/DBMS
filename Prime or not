@@ -1,0 +1,22 @@
+declare
+n number;
+i number;
+fact number;
+begin
+n:=&n;
+fact:=1;
+i:=2;
+for i in 2..n/2
+loop
+if mod(n,i)=0 then
+fact:=0;
+exit;
+end if;
+end loop;
+if fact=1 then
+dbms_output.put_line('prime');
+else
+dbms_output.put_line('not prime');
+end if;
+end;
+/
