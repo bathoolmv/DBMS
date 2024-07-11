@@ -1,0 +1,20 @@
+greaterst among 3 number
+
+declare
+a number;
+b number;
+c number;
+g number;
+begin
+a:=&a;
+b:=&b;
+c:=&c;
+g:=a;
+if b>c then
+g:=b;
+else
+g:=c;
+end if;
+dbms_output.put_line('Greatest number:'||g);
+end;
+/
