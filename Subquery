@@ -9,17 +9,18 @@ select sname,age from sailors where sid in(select sid from reserves.boats where 
 select distinctselect distinct s.sid.s.sname from sailors s, reserves r1, reserves r2 where s.sid;r1.sid and s.sid r2.sid and r1. day=r2.day and ri.bid<>r2.bid s.sid
 
 
-select sname.age from sailors where age in(select min(age) from sailors);
+select sname,age from sailors where age in(select min(age) from sailors);
 
-select rating.avg(age) from sailors group by rating;
+select rating,avg(age) from sailors group by rating;
 
 select count(distinct sname)from sailors;
 
-select avg(age) from sailors;
+select avg(age) as average_age  from sailors;
 
 
-select sid from reserves, boats where reserves.bid=boats.bid and color='red' union select sid from reserves, boats where reserves.bid-boats.bid and color='green';
+select sid from reserves, boats where reserves.bid=boats.bid and color='red' union select sid from reserves, boats where reserves.bid=boats.bid and color='green';
 
-select sname from sailors intersect select sname from sailors.reserves where select sname.age from sailors where age-(select min(age) from sailors); sailors.sid-reserves.sid and bid-103;
+select sname from sailors intersect select sname from sailors.reserves where sailors.sid=reserves.sid and bid=103;
 
-select sname from sailors where not exists(select from boats where not exists(select from reserves where reserves.sid-sailors.sid and reserves.bid-boats.bid));
+select sname,age from sailors where age=(select nin(age) from sailors;
+select sname from sailors where not exists(select*from boats where not exists(select*from reserves where reserves.sid=sailors.sid and reserves.bidboats.bid));
