@@ -1,9 +1,33 @@
-DECLARE
-    today_date DATE:= SYSDATE; 
-    day_of_week VARCHAR2(10);
+CREATE OR REPLACE FUNCTION get_weekday_name(input_date IN DATE) RETURN VARCHAR2 IS
+  weekday_name VARCHAR2(10);
 BEGIN
-   -- DY returns the first 3 characters 
-  -- DAY format returns the full name of day of week
-    day_of_week := TO_CHAR(today_date, 'DY');
-    DBMS_OUTPUT.PUT_LINE('Day of the week: ' || day_of_week);
+  -- Get the name of the weekday
+  SELECT TO_CHAR(input_date, 'Day') INTO weekday_name FROM DUAL;
+  
+  -- Trim trailing spaces
+  weekday_name := TRIM(weekday_name);
+  
+  -- Return the weekday name
+  RETURN weekday_name;
 END;
+/
+
+
+
+DECLARE
+  input_date DATE;
+  weekday_name VARCHAR2(10);
+BEGIN
+  -- Prompt the user to enter the date
+  DBMS_OUTPUT.PUT_LINE('Enter the date (YYYY-MM-DD):');
+  input_date := TO_DATE('&input_date', 'YYYY-MM-DD');
+  
+  -- Call the function to get the name of the weekday
+  weekday_name := get_weekday_name(input_date);
+  
+  -- Display the result
+  DBMS_OUTPUT.PUT_LINE('The day of the week for ' || TO_CHAR(input_date, 'YYYY-MM-DD') || ' is: ' || weekday_name);
+END;
+/
+
+
