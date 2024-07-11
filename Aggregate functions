@@ -1,0 +1,5 @@
+select count(*) from Students where marks>75;
+
+select avg(marks) as average_mark from Students;
+
+select min(marks) as min_mark from Students;
