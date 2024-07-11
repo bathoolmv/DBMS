@@ -1,0 +1,9 @@
+DECLARE
+    today_date DATE:= SYSDATE; 
+    day_of_week VARCHAR2(10);
+BEGIN
+   -- DY returns the first 3 characters 
+  -- DAY format returns the full name of day of week
+    day_of_week := TO_CHAR(today_date, 'DY');
+    DBMS_OUTPUT.PUT_LINE('Day of the week: ' || day_of_week);
+END;
