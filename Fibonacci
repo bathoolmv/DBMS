@@ -1,0 +1,22 @@
+declare
+n number;
+first number:=0;
+second number:=1;
+third number;
+temp number;
+i number;
+begin
+n:=&n;
+dbms_output.put_line('Fibonnacci series');
+dbms_output.put_line(first);
+dbms_output.put_line(second);
+for i in 2..n
+loop
+third:=first+second;
+temp:=third;
+first:=second;
+second:=temp;
+dbms_output.put_line(third);
+end loop;
+end;
+/
