@@ -1,0 +1,30 @@
+CREATE TABLE backlog (
+    student_id NUMBER,
+    course_id NUMBER,
+    PRIMARY KEY (student_id, course_id)
+);
+
+
+
+CREATE OR REPLACE TRIGGER maintain_backlog
+AFTER INSERT OR UPDATE ON enrollments
+FOR EACH ROW
+BEGIN
+    IF :NEW.grade < 40 THEN -- Assuming 40 is the passing grade
+        -- Insert into backlog if the student has failed the course
+        BEGIN
+            INSERT INTO backlog (student_id, course_id)
+            VALUES (:NEW.student_id, :NEW.course_id);
+        EXCEPTION
+            WHEN DUP_VAL_ON_INDEX THEN
+                -- Ignore duplicate entries
+                NULL;
+        END;
+    ELSE
+        -- Delete from backlog if the student has passed the course
+        DELETE FROM backlog
+        WHERE student_id = :NEW.student_id
+        AND course_id = :NEW.course_id;
+    END IF;
+END;
+/
